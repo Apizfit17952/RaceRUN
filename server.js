@@ -93,6 +93,15 @@ io.on('connection', (socket) => {
   });
 });
 
+// --- Reset endpoint (clear all tables) ---
+app.post('/reset', async (req, res) => {
+  await resetAllData();
+  io.emit('allData', {
+    users: [],
+    appearance: {},
+    raceEventName: '',
+    checkpoints: [],
+
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
